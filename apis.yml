@@ -1,0 +1,79 @@
+---
+aid: yonsei
+name: Yonsei University
+description: >-
+  Yonsei University is a private research university in Seoul, South Korea,
+  founded in 1885 and ranked #73 in the QS World University Rankings 2025. Its
+  public, machine-readable footprint is limited and primarily research- and
+  library-oriented: the Yonsei Research Information portal runs on Elsevier Pure
+  (which exposes Pure OAI-PMH and REST endpoints, but they require
+  credentials/IP allow-listing and return HTTP 401 publicly), and the medical
+  library operates a DSpace 5.5 institutional repository (YUHSpace) whose RSS
+  feed is publicly reachable while its OAI-PMH/REST paths are not currently
+  resolvable. No official, documented public developer portal or open API was
+  confirmed; the only related GitHub presence is a student-run Google Developer
+  Group (gdg-yonsei), not an official institutional API organization.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/yonsei/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Library
+  - Repository
+  - South Korea
+  - Seoul
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: yonsei:pure
+    name: Yonsei Research Information Portal (Elsevier Pure)
+    description: >-
+      Yonsei University's research information system is built on Elsevier Pure,
+      publishing organizations, researcher profiles, projects, and research
+      outputs. Pure platforms typically expose an OAI-PMH endpoint (/ws/oai) and
+      a REST API (/ws/api), but on this instance both return HTTP 401 and are
+      not publicly accessible without credentials or IP allow-listing.
+    humanURL: https://yonsei.elsevierpure.com/
+    tags: [ Research, Pure, Elsevier, OAI-PMH, Publications ]
+    properties:
+      - type: Documentation
+        url: https://yonsei.elsevierpure.com/
+  - aid: yonsei:yuhspace
+    name: YUHSpace Institutional Repository (DSpace)
+    description: >-
+      YUHSpace is the Yonsei University Health System / Medical Library
+      institutional repository, running DSpace 5.5 and built through the
+      National Library of Korea OAK distribution project. A public RSS 2.0 feed
+      is reachable; OAI-PMH and REST API paths were probed but did not resolve
+      publicly (HTTP 404) at review time.
+    humanURL: https://ir.ymlib.yonsei.ac.kr/
+    tags: [ Repository, DSpace, Library, RSS, OAK ]
+    properties:
+      - type: Documentation
+        url: https://ir.ymlib.yonsei.ac.kr/
+      - type: BlogRSS
+        url: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
+common:
+  - type: Website
+    url: https://www.yonsei.ac.kr/
+  - type: GitHub
+    url: https://github.com/gdg-yonsei
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/yonsei/
+  - type: Plans
+    url: plans/yonsei-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/yonsei-rate-limits.yml
+  - type: FinOps
+    url: finops/yonsei-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

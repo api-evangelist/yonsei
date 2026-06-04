@@ -1,0 +1,53 @@
+---
+name: Yonsei University
+description: Yonsei University public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/yonsei/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      No official documented public developer portal or open API was found for
+      Yonsei University. The Elsevier Pure research portal is live but its
+      Pure OAI-PMH (/ws/oai) and REST (/ws/api) endpoints return HTTP 401 and
+      are gated. The medical library's DSpace 5.5 repository (YUHSpace) is live
+      with a publicly reachable RSS feed, but its OAI-PMH and REST paths did not
+      resolve (HTTP 404). The only GitHub presence is a student Google Developer
+      Group (gdg-yonsei), not an official institutional API org. Nothing was
+      fabricated; only live-verified URLs and their observed HTTP statuses are
+      recorded below.
+    endpoints:
+      - url: https://www.yonsei.ac.kr/
+        status: 200
+        note: Official university website (English landing redirects, resolves 200).
+      - url: https://yonsei.elsevierpure.com/
+        status: 200
+        note: Elsevier Pure research information portal landing page.
+      - url: https://yonsei.elsevierpure.com/ws/oai?verb=Identify
+        status: 401
+        note: Pure OAI-PMH endpoint exists but is gated (unauthorized).
+      - url: https://yonsei.elsevierpure.com/ws/api/524/research-outputs
+        status: 401
+        note: Pure REST API path exists but requires credentials.
+      - url: https://ir.ymlib.yonsei.ac.kr/
+        status: 200
+        note: YUHSpace DSpace 5.5 medical library institutional repository, live.
+      - url: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
+        status: 200
+        note: Public DSpace RSS 2.0 site feed, confirmed working.
+      - url: https://ir.ymlib.yonsei.ac.kr/oai/request?verb=Identify
+        status: 404
+        note: Expected DSpace OAI-PMH path does not resolve publicly.
+      - url: https://ir.ymlib.yonsei.ac.kr/rest
+        status: 404
+        note: DSpace REST API path not publicly available.
+      - url: https://library.yonsei.ac.kr/en
+        status: 302
+        note: Main Yonsei library portal (redirects); no public API documented.
+      - url: https://github.com/gdg-yonsei
+        status: 200
+        note: Student Google Developer Group org (71 repos); not an official institutional API org.
+      - url: https://www.linkedin.com/school/yonsei/
+        status: 200
+        note: Official LinkedIn school page.
