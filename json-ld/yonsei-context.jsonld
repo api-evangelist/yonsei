@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "pure": "https://yonsei.elsevierpure.com/vocab#",
+    "@vocab": "https://yonsei.elsevierpure.com/vocab#",
+
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+
+    "Organization": "schema:CollegeOrUniversity",
+    "institution": {
+      "@id": "schema:CollegeOrUniversity",
+      "@type": "@id"
+    },
+
+    "ResearchOutput": "schema:ScholarlyArticle",
+    "Person": "schema:Person",
+    "Project": "schema:ResearchProject",
+    "OrganizationalUnit": "schema:Organization",
+
+    "uuid": "schema:identifier",
+    "pureId": "schema:identifier",
+    "portalUrl": "schema:url",
+    "title": "schema:name",
+    "subTitle": "schema:alternateName",
+    "createdDate": "schema:dateCreated",
+    "modifiedDate": "schema:dateModified",
+    "publicationStatuses": "schema:creativeWorkStatus",
+    "language": "schema:inLanguage",
+    "contributors": {
+      "@id": "schema:author",
+      "@type": "@id"
+    },
+    "organizations": {
+      "@id": "schema:affiliation",
+      "@type": "@id"
+    },
+    "managingOrganization": {
+      "@id": "schema:publisher",
+      "@type": "@id"
+    },
+    "peerReview": "pure:peerReview"
+  },
+  "@type": "schema:CollegeOrUniversity",
+  "name": "Yonsei University",
+  "url": "https://www.yonsei.ac.kr/",
+  "description": "Private research university in Seoul, South Korea, founded in 1885. Its Elsevier Pure research-information portal exposes a public OpenAPI 3.0.1 description at https://yonsei.elsevierpure.com/ws/api/openapi.json."
+}

@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yonsei/main/json-structure/yonsei-person-structure.json",
+  "name": "YonseiPerson",
+  "type": "object",
+  "description": "An academic professional, student, or other individual attached to the institution.",
+  "properties": {
+    "pureId": {
+      "type": "integer"
+    },
+    "uuid": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modifiedDate": {
+      "type": "string"
+    },
+    "portalUrl": {
+      "type": "string"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "personExpertise": {
+      "type": "object",
+      "name": "PersonExpertiseRef"
+    },
+    "startDateAsResearcher": {
+      "type": "string"
+    },
+    "affiliationNote": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "string"
+    },
+    "employeeStartDate": {
+      "type": "string"
+    },
+    "employeeEndDate": {
+      "type": "string"
+    },
+    "externalPositions": {
+      "type": "array",
+      "items": {
+        "type": "ExternalAppointment"
+      }
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "KeywordGroup"
+      }
+    },
+    "leavesOfAbsence": {
+      "type": "array",
+      "items": {
+        "type": "PersonClassifiedLeaveOfAbsence"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "Link"
+      }
+    },
+    "name": {
+      "type": "object",
+      "name": "Name"
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "ClassifiedName"
+      }
+    },
+    "nationality": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "orcid": {
+      "type": "string"
+    },
+    "orcidAuthenticated": {
+      "type": "boolean"
+    },
+    "cienciaId": {
+      "type": "string"
+    },
+    "cienciaIdAuthenticated": {
+      "type": "boolean"
+    },
+    "honoraryStaffOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "HonoraryStaffOrganizationAssociation"
+      }
+    },
+    "staffOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "StaffOrganizationAssociation"
+      }
+    },
+    "studentOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "StudentOrganizationAssociation"
+      }
+    },
+    "visitingScholarOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "VisitingScholarOrganizationAssociation"
+      }
+    },
+    "academicQualifications": {
+      "type": "array",
+      "items": {
+        "type": "AcademicQualification"
+      }
+    },
+    "profilePhotos": {
+      "type": "array",
+      "items": {
+        "type": "ImageFile"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "Document"
+      }
+    },
+    "privateAddress": {
+      "type": "object",
+      "name": "Address"
+    },
+    "professionalQualifications": {
+      "type": "array",
+      "items": {
+        "type": "ProfessionalQualification"
+      }
+    },
+    "selectedForProfileRefinementService": {
+      "type": "boolean"
+    },
+    "profileInformation": {
+      "type": "array",
+      "items": {
+        "type": "ClassifiedFormattedLocalizedValue"
+      }
+    },
+    "retirementDate": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "titles": {
+      "type": "array",
+      "items": {
+        "type": "ClassifiedLocalizedValue"
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "name": "Visibility"
+    },
+    "willingToTakePhdStudents": {
+      "type": "boolean"
+    },
+    "willingToTakePhdStudentsDescription": {
+      "type": "string"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "Identifier"
+      }
+    },
+    "user": {
+      "type": "object",
+      "name": "UserRef"
+    },
+    "customDefinedFields": {
+      "type": "object",
+      "name": "CustomDefinedFields"
+    },
+    "workflow": {
+      "type": "object",
+      "name": "Workflow"
+    },
+    "mainResearchArea": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "profiled": {
+      "type": "boolean"
+    }
+  },
+  "required": []
+}

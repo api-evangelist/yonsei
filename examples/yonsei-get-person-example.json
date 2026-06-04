@@ -1,0 +1,26 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://yonsei.elsevierpure.com/ws/api/persons/{uuid}",
+    "headers": {
+      "api-key": "<your-api-key>",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "pureId": 234567,
+    "uuid": "11111111-1111-1111-1111-111111111111",
+    "createdBy": "",
+    "createdDate": "",
+    "modifiedBy": "",
+    "modifiedDate": "",
+    "portalUrl": "",
+    "prettyUrlIdentifiers": [],
+    "previousUuids": [],
+    "version": "",
+    "personExpertise": {},
+    "startDateAsResearcher": "",
+    "affiliationNote": "",
+    "dateOfBirth": ""
+  }
+}

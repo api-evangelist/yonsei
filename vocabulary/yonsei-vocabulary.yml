@@ -1,0 +1,62 @@
+vocabulary:
+  name: Yonsei University Pure Research Information Vocabulary
+  description: >-
+    Controlled terms observed in the Yonsei University Elsevier Pure REST API
+    (version 5.35.3-4), covering research outputs, researcher profiles,
+    projects, and the organizational and identifier conventions used by the
+    Pure research-information platform.
+  version: '1.0.0'
+  terms:
+    - term: Pure
+      definition: >-
+        Elsevier's Current Research Information System (CRIS) that powers the
+        Yonsei Research Information Portal and exposes the /ws/api REST API.
+      tags: [platform, elsevier]
+    - term: ResearchOutput
+      definition: >-
+        A scholarly publication or other research result (article, book,
+        conference contribution, thesis) cataloged in Pure.
+      tags: [object, publication]
+    - term: Person
+      definition: >-
+        A researcher or staff profile, including affiliations, qualifications,
+        and external identifiers.
+      tags: [object, researcher]
+    - term: Project
+      definition: >-
+        A funded or unfunded research project with participants, periods, and
+        related outputs.
+      tags: [object, project]
+    - term: pureId
+      definition: >-
+        Integer surrogate key uniquely identifying a record within a single
+        Pure instance.
+      tags: [identifier]
+    - term: uuid
+      definition: >-
+        Stable, globally unique string identifier for a Pure object, preserved
+        across imports and migrations.
+      tags: [identifier]
+    - term: portalUrl
+      definition: The public-facing URL of an object on the Pure research portal.
+      tags: [link]
+    - term: ClassificationRef
+      definition: >-
+        A reference to a controlled-vocabulary classification term (type,
+        category, language, status) used throughout Pure objects.
+      tags: [classification, reference]
+    - term: OrganizationRef
+      definition: >-
+        A reference to an organizational unit that owns or manages an object,
+        such as the managingOrganization of a research output.
+      tags: [organization, reference]
+    - term: api-key
+      definition: >-
+        The API-key security scheme required to authenticate against the Pure
+        REST API; anonymous access is limited to Open Data scenarios.
+      tags: [security, authentication]
+    - term: OAI-PMH
+      definition: >-
+        Open Archives Initiative Protocol for Metadata Harvesting; Pure exposes
+        a /ws/oai endpoint, which on this instance returns HTTP 401.
+      tags: [protocol, harvesting]

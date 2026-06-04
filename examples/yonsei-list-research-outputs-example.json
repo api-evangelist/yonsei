@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://yonsei.elsevierpure.com/ws/api/research-outputs?size=10&offset=0",
+    "headers": {
+      "api-key": "<your-api-key>",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "count": 1,
+    "pageInformation": {
+      "offset": 0,
+      "size": 10
+    },
+    "items": [
+      {
+        "pureId": 123456,
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "createdBy": "",
+        "createdDate": "",
+        "modifiedBy": "",
+        "modifiedDate": "",
+        "portalUrl": "",
+        "prettyUrlIdentifiers": [],
+        "previousUuids": [],
+        "version": "latest",
+        "title": {},
+        "subTitle": {},
+        "type": {},
+        "category": {},
+        "peerReview": true
+      }
+    ]
+  }
+}

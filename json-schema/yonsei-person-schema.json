@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yonsei/main/json-schema/yonsei-person-schema.json",
+  "title": "Yonsei Pure Person",
+  "description": "An academic professional, student, or other individual attached to the institution.",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "pureId": {
+      "type": "integer",
+      "description": "Pure database ID of the object, prefer using the UUID if it is present on the entity",
+      "format": "int64"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID, this is the primary identity of the entity",
+      "format": "uuid"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Username of creator"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date and time of creation",
+      "format": "date-time"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "Username of the user that performed a modification"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "description": "Date and time of last modification",
+      "format": "date-time"
+    },
+    "portalUrl": {
+      "type": "string",
+      "description": "URL of the content on the Pure Portal"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a \"dirty write\". A dirty write is performed by not including the property value or setting the property to null"
+    },
+    "personExpertise": {
+      "type": "object",
+      "x-ref": "PersonExpertiseRef"
+    },
+    "startDateAsResearcher": {
+      "type": "string",
+      "description": "Date that the person entered into the academic profession.",
+      "format": "date"
+    },
+    "affiliationNote": {
+      "type": "string",
+      "description": "Notes regarding affiliations of the person."
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "description": "The person's date of birth.",
+      "format": "date"
+    },
+    "employeeStartDate": {
+      "type": "string",
+      "description": "Date of the persons first day of the institution.",
+      "format": "date"
+    },
+    "employeeEndDate": {
+      "type": "string",
+      "description": "Date of the persons last day of the institution.",
+      "format": "date"
+    },
+    "externalPositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ExternalAppointment"
+      }
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "KeywordGroup"
+      }
+    },
+    "leavesOfAbsence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "PersonClassifiedLeaveOfAbsence"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Link"
+      }
+    },
+    "name": {
+      "type": "object",
+      "x-ref": "Name"
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ClassifiedName"
+      }
+    },
+    "nationality": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "orcid": {
+      "type": "string",
+      "description": "orcid of the person."
+    },
+    "orcidAuthenticated": {
+      "type": "boolean",
+      "description": "Authentication status of the orcid associated with the person."
+    },
+    "cienciaId": {
+      "type": "string",
+      "description": "Ciencia ID of the person."
+    },
+    "cienciaIdAuthenticated": {
+      "type": "boolean",
+      "description": "Authentication status of the Ciencia ID associated with the person."
+    },
+    "honoraryStaffOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "HonoraryStaffOrganizationAssociation"
+      }
+    },
+    "staffOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "StaffOrganizationAssociation"
+      }
+    },
+    "studentOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "StudentOrganizationAssociation"
+      }
+    },
+    "visitingScholarOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "VisitingScholarOrganizationAssociation"
+      }
+    },
+    "academicQualifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "AcademicQualification"
+      }
+    },
+    "profilePhotos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ImageFile"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Document"
+      }
+    },
+    "privateAddress": {
+      "type": "object",
+      "x-ref": "Address"
+    },
+    "professionalQualifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ProfessionalQualification"
+      }
+    },
+    "selectedForProfileRefinementService": {
+      "type": "boolean",
+      "description": "If the person has been profiled."
+    },
+    "profileInformation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ClassifiedFormattedLocalizedValue"
+      }
+    },
+    "retirementDate": {
+      "type": "string",
+      "description": "Date of retirement for the person",
+      "format": "date"
+    },
+    "gender": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "titles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ClassifiedLocalizedValue"
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "x-ref": "Visibility"
+    },
+    "willingToTakePhdStudents": {
+      "type": "boolean",
+      "description": "Boolean to define if the Person is willing to take on Phd Students."
+    },
+    "willingToTakePhdStudentsDescription": {
+      "type": "string",
+      "description": "Field to describe or list phd projects that the person will participate in."
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Identifier"
+      }
+    },
+    "user": {
+      "type": "object",
+      "x-ref": "UserRef"
+    },
+    "customDefinedFields": {
+      "type": "object",
+      "x-ref": "CustomDefinedFields"
+    },
+    "workflow": {
+      "type": "object",
+      "x-ref": "Workflow"
+    },
+    "mainResearchArea": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The content system name"
+    },
+    "profiled": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yonsei/main/json-structure/yonsei-project-structure.json",
+  "name": "YonseiProject",
+  "type": "object",
+  "description": "Projects exists in two variations depending on the functionality enabled in the Pure installation.",
+  "properties": {
+    "pureId": {
+      "type": "integer"
+    },
+    "uuid": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modifiedDate": {
+      "type": "string"
+    },
+    "portalUrl": {
+      "type": "string"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "acronym": {
+      "type": "string"
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "AbstractParticipantAssociation"
+      }
+    },
+    "externalOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "ExternalOrganizationRef"
+      }
+    },
+    "coManagingOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "OrganizationRef"
+      }
+    },
+    "collaborators": {
+      "type": "array",
+      "items": {
+        "type": "CollaboratorAssociation"
+      }
+    },
+    "descriptions": {
+      "type": "array",
+      "items": {
+        "type": "ClassifiedFormattedLocalizedValue"
+      }
+    },
+    "period": {
+      "type": "object",
+      "name": "DateRange"
+    },
+    "effectivePeriod": {
+      "type": "object",
+      "name": "DeprecatedDateRange"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "Identifier"
+      }
+    },
+    "natureTypes": {
+      "type": "array",
+      "items": {
+        "type": "ClassificationRef"
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "OrganizationRef"
+      }
+    },
+    "managingOrganization": {
+      "type": "object",
+      "name": "OrganizationRef"
+    },
+    "shortTitle": {
+      "type": "object",
+      "name": "LocalizedString"
+    },
+    "title": {
+      "type": "object",
+      "name": "LocalizedString"
+    },
+    "totalAcademicOwnership": {
+      "type": "number"
+    },
+    "type": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "workflow": {
+      "type": "object",
+      "name": "Workflow"
+    },
+    "visibility": {
+      "type": "object",
+      "name": "Visibility"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "Link"
+      }
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "KeywordGroup"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "Document"
+      }
+    },
+    "curtailed": {
+      "type": "object",
+      "name": "ProjectCurtailed"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "ProjectAssociation"
+      }
+    },
+    "applicationClusters": {
+      "type": "array",
+      "items": {
+        "type": "ApplicationClusterRef"
+      }
+    },
+    "awardClusters": {
+      "type": "array",
+      "items": {
+        "type": "AwardClusterRef"
+      }
+    },
+    "dataSets": {
+      "type": "array",
+      "items": {
+        "type": "DataSetAwardableAssociation"
+      }
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": "PrizeAwardableAssociation"
+      }
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "ActivityAwardableAssociation"
+      }
+    },
+    "pressMedias": {
+      "type": "array",
+      "items": {
+        "type": "PressMediaAwardableAssociation"
+      }
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "EquipmentAwardableAssociation"
+      }
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "ImpactAwardableAssociation"
+      }
+    },
+    "researchOutputs": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputAwardableAssociation"
+      }
+    },
+    "studentTheses": {
+      "type": "array",
+      "items": {
+        "type": "StudentThesisAwardableAssociation"
+      }
+    },
+    "customDefinedFields": {
+      "type": "object",
+      "name": "CustomDefinedFields"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "ImageFile"
+      }
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "typeDiscriminator": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "managingOrganization",
+    "organizations",
+    "title",
+    "type",
+    "typeDiscriminator"
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yonsei/main/json-schema/yonsei-researchoutput-schema.json",
+  "title": "Yonsei Pure ResearchOutput",
+  "description": "Research output exists in many variations, from written to non-textual form. Templates are available for a range of these variations.",
+  "type": "object",
+  "required": [
+    "category",
+    "contributors",
+    "language",
+    "managingOrganization",
+    "publicationStatuses",
+    "title",
+    "type",
+    "typeDiscriminator"
+  ],
+  "properties": {
+    "pureId": {
+      "type": "integer",
+      "description": "Pure database ID of the object, prefer using the UUID if it is present on the entity",
+      "format": "int64"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID, this is the primary identity of the entity",
+      "format": "uuid"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Username of creator"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date and time of creation",
+      "format": "date-time"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "Username of the user that performed a modification"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "description": "Date and time of last modification",
+      "format": "date-time"
+    },
+    "portalUrl": {
+      "type": "string",
+      "description": "URL of the content on the Pure Portal"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a \"dirty write\". A dirty write is performed by not including the property value or setting the property to null"
+    },
+    "title": {
+      "type": "object",
+      "x-ref": "FormattedString"
+    },
+    "subTitle": {
+      "type": "object",
+      "x-ref": "FormattedString"
+    },
+    "type": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "category": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "peerReview": {
+      "type": "boolean",
+      "description": "Indicates whether the research output is peer reviewed or not. Query the /research-outputs/allowed-peer-review-configurations endpoint for allowed values."
+    },
+    "internationalPeerReview": {
+      "type": "boolean",
+      "description": "Indicates whether the research output is internationally peer reviewed or not. Query the /research-outputs/allowed-peer-review-configurations endpoint for allowed values."
+    },
+    "publicationStatuses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "PublicationStatus"
+      }
+    },
+    "language": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "translatedTitle": {
+      "type": "object",
+      "x-ref": "FormattedLocalizedString"
+    },
+    "translatedSubTitle": {
+      "type": "object",
+      "x-ref": "FormattedLocalizedString"
+    },
+    "contributors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "AbstractContributorAssociation"
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "OrganizationRef"
+      }
+    },
+    "externalOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ExternalOrganizationRef"
+      }
+    },
+    "totalNumberOfContributors": {
+      "type": "integer",
+      "description": "The total number of authors from author collaborations.",
+      "format": "int32"
+    },
+    "managingOrganization": {
+      "type": "object",
+      "x-ref": "OrganizationRef"
+    },
+    "submissionYear": {
+      "type": "integer",
+      "description": "The submission year of the research output.",
+      "format": "int32"
+    },
+    "mainResearchArea": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "electronicVersions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ElectronicVersion"
+      }
+    },
+    "additionalFiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "AdditionalFileElectronicVersion"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Link"
+      }
+    },
+    "articleProcessingCharge": {
+      "type": "object",
+      "x-ref": "ArticleProcessingCharge"
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "KeywordGroup"
+      }
+    },
+    "bibliographicalNote": {
+      "type": "object",
+      "x-ref": "LocalizedString"
+    },
+    "descriptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ClassifiedFormattedLocalizedValue"
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "x-ref": "Visibility"
+    },
+    "workflow": {
+      "type": "object",
+      "x-ref": "Workflow"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Identifier"
+      }
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputPrizeAssociation"
+      }
+    },
+    "pressMedias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputPressMediaAssociation"
+      }
+    },
+    "dataSets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputDataSetAssociation"
+      }
+    },
+    "studentThesis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputStudentThesisAssociation"
+      }
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputImpactAssociation"
+      }
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ActivityRef"
+      }
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "EquipmentRef"
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ProjectAwardableAssociation"
+      }
+    },
+    "researchOutputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputAssociation"
+      }
+    },
+    "customDefinedFields": {
+      "type": "object",
+      "x-ref": "CustomDefinedFields"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ImageFile"
+      }
+    },
+    "fundingText": {
+      "type": "object",
+      "x-ref": "LocalizedString"
+    },
+    "fundingDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "FundingDetails"
+      }
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The content system name"
+    },
+    "abstract": {
+      "type": "object",
+      "x-ref": "FormattedLocalizedString"
+    },
+    "typeDiscriminator": {
+      "type": "string"
+    }
+  }
+}

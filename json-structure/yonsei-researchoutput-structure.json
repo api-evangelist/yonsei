@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yonsei/main/json-structure/yonsei-researchoutput-structure.json",
+  "name": "YonseiResearchOutput",
+  "type": "object",
+  "description": "Research output exists in many variations, from written to non-textual form. Templates are available for a range of these variations.",
+  "properties": {
+    "pureId": {
+      "type": "integer"
+    },
+    "uuid": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modifiedDate": {
+      "type": "string"
+    },
+    "portalUrl": {
+      "type": "string"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "title": {
+      "type": "object",
+      "name": "FormattedString"
+    },
+    "subTitle": {
+      "type": "object",
+      "name": "FormattedString"
+    },
+    "type": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "category": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "peerReview": {
+      "type": "boolean"
+    },
+    "internationalPeerReview": {
+      "type": "boolean"
+    },
+    "publicationStatuses": {
+      "type": "array",
+      "items": {
+        "type": "PublicationStatus"
+      }
+    },
+    "language": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "translatedTitle": {
+      "type": "object",
+      "name": "FormattedLocalizedString"
+    },
+    "translatedSubTitle": {
+      "type": "object",
+      "name": "FormattedLocalizedString"
+    },
+    "contributors": {
+      "type": "array",
+      "items": {
+        "type": "AbstractContributorAssociation"
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "OrganizationRef"
+      }
+    },
+    "externalOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "ExternalOrganizationRef"
+      }
+    },
+    "totalNumberOfContributors": {
+      "type": "integer"
+    },
+    "managingOrganization": {
+      "type": "object",
+      "name": "OrganizationRef"
+    },
+    "submissionYear": {
+      "type": "integer"
+    },
+    "mainResearchArea": {
+      "type": "object",
+      "name": "ClassificationRef"
+    },
+    "electronicVersions": {
+      "type": "array",
+      "items": {
+        "type": "ElectronicVersion"
+      }
+    },
+    "additionalFiles": {
+      "type": "array",
+      "items": {
+        "type": "AdditionalFileElectronicVersion"
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "Link"
+      }
+    },
+    "articleProcessingCharge": {
+      "type": "object",
+      "name": "ArticleProcessingCharge"
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "KeywordGroup"
+      }
+    },
+    "bibliographicalNote": {
+      "type": "object",
+      "name": "LocalizedString"
+    },
+    "descriptions": {
+      "type": "array",
+      "items": {
+        "type": "ClassifiedFormattedLocalizedValue"
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "name": "Visibility"
+    },
+    "workflow": {
+      "type": "object",
+      "name": "Workflow"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "Identifier"
+      }
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputPrizeAssociation"
+      }
+    },
+    "pressMedias": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputPressMediaAssociation"
+      }
+    },
+    "dataSets": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputDataSetAssociation"
+      }
+    },
+    "studentThesis": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputStudentThesisAssociation"
+      }
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputImpactAssociation"
+      }
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "ActivityRef"
+      }
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "EquipmentRef"
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "ProjectAwardableAssociation"
+      }
+    },
+    "researchOutputs": {
+      "type": "array",
+      "items": {
+        "type": "ResearchOutputAssociation"
+      }
+    },
+    "customDefinedFields": {
+      "type": "object",
+      "name": "CustomDefinedFields"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "ImageFile"
+      }
+    },
+    "fundingText": {
+      "type": "object",
+      "name": "LocalizedString"
+    },
+    "fundingDetails": {
+      "type": "array",
+      "items": {
+        "type": "FundingDetails"
+      }
+    },
+    "systemName": {
+      "type": "string"
+    },
+    "abstract": {
+      "type": "object",
+      "name": "FormattedLocalizedString"
+    },
+    "typeDiscriminator": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "category",
+    "contributors",
+    "language",
+    "managingOrganization",
+    "publicationStatuses",
+    "title",
+    "type",
+    "typeDiscriminator"
+  ]
+}

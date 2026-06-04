@@ -1,0 +1,55 @@
+rules:
+
+  yonsei-info-contact:
+    description: API info object should include a contact for the Yonsei Pure API.
+    given: $.info
+    severity: warn
+    then:
+      field: contact
+      function: truthy
+
+  yonsei-server-https:
+    description: All servers must use HTTPS (the Yonsei Pure instance is served over TLS).
+    given: $.servers[*].url
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  yonsei-api-key-security:
+    description: Pure API uses an api-key security scheme; it must be defined.
+    given: $.components.securitySchemes
+    severity: warn
+    then:
+      field: api-key
+      function: truthy
+
+  yonsei-operation-tags:
+    description: Every operation should be tagged so research-information resources are grouped.
+    given: $.paths[*][get,put,post,delete]
+    severity: warn
+    then:
+      field: tags
+      function: truthy
+
+  yonsei-uuid-on-core-objects:
+    description: Core Pure objects (ResearchOutput, Person, Project) expose a uuid identifier.
+    given:
+      - $.components.schemas.ResearchOutput.properties
+      - $.components.schemas.Person.properties
+      - $.components.schemas.Project.properties
+    severity: warn
+    then:
+      field: uuid
+      function: truthy
+
+  yonsei-pure-id-integer:
+    description: The pureId surrogate key, when present, should be an integer.
+    given: $.components.schemas[*].properties.pureId
+    severity: info
+    then:
+      field: type
+      function: pattern
+      functionOptions:
+        match: "^integer$"

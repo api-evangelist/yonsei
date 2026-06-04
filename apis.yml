@@ -44,6 +44,10 @@ apis:
     properties:
       - type: Documentation
         url: https://yonsei.elsevierpure.com/
+      - type: OpenAPI
+        url: openapi/yonsei-pure.yaml
+      - type: x-spec-source
+        url: https://yonsei.elsevierpure.com/ws/api/openapi.json
   - aid: yonsei:yuhspace
     name: YUHSpace Institutional Repository (DSpace)
     description: >-

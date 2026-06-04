@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/yonsei/main/json-schema/yonsei-project-schema.json",
+  "title": "Yonsei Pure Project",
+  "description": "Projects exists in two variations depending on the functionality enabled in the Pure installation.",
+  "type": "object",
+  "required": [
+    "managingOrganization",
+    "organizations",
+    "title",
+    "type",
+    "typeDiscriminator"
+  ],
+  "properties": {
+    "pureId": {
+      "type": "integer",
+      "description": "Pure database ID of the object, prefer using the UUID if it is present on the entity",
+      "format": "int64"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID, this is the primary identity of the entity",
+      "format": "uuid"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Username of creator"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date and time of creation",
+      "format": "date-time"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "Username of the user that performed a modification"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "description": "Date and time of last modification",
+      "format": "date-time"
+    },
+    "portalUrl": {
+      "type": "string",
+      "description": "URL of the content on the Pure Portal"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a \"dirty write\". A dirty write is performed by not including the property value or setting the property to null"
+    },
+    "acronym": {
+      "type": "string",
+      "description": "The acronym of the project."
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "AbstractParticipantAssociation"
+      }
+    },
+    "externalOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ExternalOrganizationRef"
+      }
+    },
+    "coManagingOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "OrganizationRef"
+      }
+    },
+    "collaborators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "CollaboratorAssociation"
+      }
+    },
+    "descriptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ClassifiedFormattedLocalizedValue"
+      }
+    },
+    "period": {
+      "type": "object",
+      "x-ref": "DateRange"
+    },
+    "effectivePeriod": {
+      "type": "object",
+      "x-ref": "DeprecatedDateRange"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Identifier"
+      }
+    },
+    "natureTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ClassificationRef"
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "OrganizationRef"
+      }
+    },
+    "managingOrganization": {
+      "type": "object",
+      "x-ref": "OrganizationRef"
+    },
+    "shortTitle": {
+      "type": "object",
+      "x-ref": "LocalizedString"
+    },
+    "title": {
+      "type": "object",
+      "x-ref": "LocalizedString"
+    },
+    "totalAcademicOwnership": {
+      "type": "number",
+      "description": "Total academic ownership of the project.",
+      "format": "double"
+    },
+    "type": {
+      "type": "object",
+      "x-ref": "ClassificationRef"
+    },
+    "workflow": {
+      "type": "object",
+      "x-ref": "Workflow"
+    },
+    "visibility": {
+      "type": "object",
+      "x-ref": "Visibility"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Link"
+      }
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "KeywordGroup"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "Document"
+      }
+    },
+    "curtailed": {
+      "type": "object",
+      "x-ref": "ProjectCurtailed"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ProjectAssociation"
+      }
+    },
+    "applicationClusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ApplicationClusterRef"
+      }
+    },
+    "awardClusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "AwardClusterRef"
+      }
+    },
+    "dataSets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "DataSetAwardableAssociation"
+      }
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "PrizeAwardableAssociation"
+      }
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ActivityAwardableAssociation"
+      }
+    },
+    "pressMedias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "PressMediaAwardableAssociation"
+      }
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "EquipmentAwardableAssociation"
+      }
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ImpactAwardableAssociation"
+      }
+    },
+    "researchOutputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ResearchOutputAwardableAssociation"
+      }
+    },
+    "studentTheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "StudentThesisAwardableAssociation"
+      }
+    },
+    "customDefinedFields": {
+      "type": "object",
+      "x-ref": "CustomDefinedFields"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "x-ref": "ImageFile"
+      }
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The content system name"
+    },
+    "typeDiscriminator": {
+      "type": "string"
+    }
+  }
+}
