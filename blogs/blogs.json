@@ -1,0 +1,21 @@
+{
+  "repo": "yonsei",
+  "feeds": [
+    {
+      "source": "https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site",
+      "feed_url": "https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://ir.ymlib.yonsei.ac.kr/",
+      "feed_url": "https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 4,
+  "fetched": "2026-06-14T20:42:17Z"
+}
