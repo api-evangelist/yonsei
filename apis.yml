@@ -64,6 +64,10 @@ apis:
       - type: BlogRSS
         url: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
 common:
+  - type: DomainSecurity
+    url: security/yonsei-domain-security.yml
+  - type: Authentication
+    url: authentication/yonsei-authentication.yml
   - type: Website
     url: https://www.yonsei.ac.kr/
   - type: GitHub
