@@ -64,6 +64,8 @@ apis:
       - type: BlogRSS
         url: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
 common:
+  - type: AgenticAccess
+    url: agentic-access/yonsei-agentic-access.yml
   - type: DomainSecurity
     url: security/yonsei-domain-security.yml
   - type: Authentication
