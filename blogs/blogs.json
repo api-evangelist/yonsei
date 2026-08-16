@@ -6,16 +6,18 @@
       "feed_url": "https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     },
     {
       "source": "https://ir.ymlib.yonsei.ac.kr/",
       "feed_url": "https://ir.ymlib.yonsei.ac.kr/",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
   "post_count": 8,
-  "fetched": "2026-08-06T14:08:46Z"
+  "fetched": "2026-08-15T12:11:08Z"
 }
