@@ -68,6 +68,8 @@ apis:
   description: The activity API from Yonsei University — 39 operation(s) for activity.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Activity
+  tags_raw:
   - activity
   properties:
   - type: OpenAPI
@@ -81,6 +83,8 @@ apis:
   description: The application API from Yonsei University — 36 operation(s) for application.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Application
+  tags_raw:
   - application
   properties:
   - type: OpenAPI
@@ -94,7 +98,8 @@ apis:
   description: >-
     The authorCollaboration API from Yonsei University — 9 operation(s) for authorcollaboration.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - authorCollaboration
   properties:
   - type: OpenAPI
@@ -121,7 +126,8 @@ apis:
   description: >-
     The classificationScheme API from Yonsei University — 7 operation(s) for classificationscheme.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - classificationScheme
   properties:
   - type: OpenAPI
@@ -147,7 +153,8 @@ apis:
   name: Yonsei University conferenceSeries API
   description: The conferenceSeries API from Yonsei University — 14 operation(s) for conferenceseries.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - conferenceSeries
   properties:
   - type: OpenAPI
@@ -161,6 +168,8 @@ apis:
   description: The contract API from Yonsei University — 26 operation(s) for contract.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Contract
+  tags_raw:
   - contract
   properties:
   - type: OpenAPI
@@ -187,6 +196,8 @@ apis:
   description: The dataSet API from Yonsei University — 30 operation(s) for dataset.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Dataset
+  tags_raw:
   - dataSet
   properties:
   - type: OpenAPI
@@ -200,6 +211,8 @@ apis:
   description: The education API from Yonsei University — 14 operation(s) for education.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Education
+  tags_raw:
   - education
   properties:
   - type: OpenAPI
@@ -213,6 +226,8 @@ apis:
   description: The equipment API from Yonsei University — 28 operation(s) for equipment.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Equipment
+  tags_raw:
   - equipment
   properties:
   - type: OpenAPI
@@ -225,7 +240,8 @@ apis:
   name: Yonsei University ethicalReview API
   description: The ethicalReview API from Yonsei University — 22 operation(s) for ethicalreview.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - ethicalReview
   properties:
   - type: OpenAPI
@@ -239,6 +255,8 @@ apis:
   description: The event API from Yonsei University — 22 operation(s) for event.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Event
+  tags_raw:
   - event
   properties:
   - type: OpenAPI
@@ -252,7 +270,8 @@ apis:
   description: >-
     The externalOrganization API from Yonsei University — 29 operation(s) for externalorganization.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - externalOrganization
   properties:
   - type: OpenAPI
@@ -265,7 +284,8 @@ apis:
   name: Yonsei University externalPerson API
   description: The externalPerson API from Yonsei University — 22 operation(s) for externalperson.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - externalPerson
   properties:
   - type: OpenAPI
@@ -292,7 +312,8 @@ apis:
   description: >-
     The fundingOpportunity API from Yonsei University — 21 operation(s) for fundingopportunity.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - fundingOpportunity
   properties:
   - type: OpenAPI
@@ -306,6 +327,8 @@ apis:
   description: The impact API from Yonsei University — 31 operation(s) for impact.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Impact
+  tags_raw:
   - impact
   properties:
   - type: OpenAPI
@@ -332,7 +355,8 @@ apis:
   description: >-
     The keywordGroupConfiguration API from Yonsei University — 7 operation(s) for keywordgroupconfiguration.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - keywordGroupConfiguration
   properties:
   - type: OpenAPI
@@ -359,6 +383,8 @@ apis:
   description: The organization API from Yonsei University — 34 operation(s) for organization.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Organization
+  tags_raw:
   - organization
   properties:
   - type: OpenAPI
@@ -372,6 +398,8 @@ apis:
   description: The person API from Yonsei University — 58 operation(s) for person.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Persons
+  tags_raw:
   - person
   properties:
   - type: OpenAPI
@@ -384,7 +412,8 @@ apis:
   name: Yonsei University personExpertise API
   description: The personExpertise API from Yonsei University — 7 operation(s) for personexpertise.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - personExpertise
   properties:
   - type: OpenAPI
@@ -397,7 +426,8 @@ apis:
   name: Yonsei University pressMedia API
   description: The pressMedia API from Yonsei University — 24 operation(s) for pressmedia.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - pressMedia
   properties:
   - type: OpenAPI
@@ -424,6 +454,8 @@ apis:
   description: The project API from Yonsei University — 33 operation(s) for project.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Project
+  tags_raw:
   - project
   properties:
   - type: OpenAPI
@@ -437,6 +469,8 @@ apis:
   description: The publisher API from Yonsei University — 18 operation(s) for publisher.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Publishers
+  tags_raw:
   - publisher
   properties:
   - type: OpenAPI
@@ -449,7 +483,8 @@ apis:
   name: Yonsei University researchOutput API
   description: The researchOutput API from Yonsei University — 67 operation(s) for researchoutput.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - researchOutput
   properties:
   - type: OpenAPI
@@ -463,6 +498,8 @@ apis:
   description: The role API from Yonsei University — 2 operation(s) for role.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Role
+  tags_raw:
   - role
   properties:
   - type: OpenAPI
@@ -501,7 +538,8 @@ apis:
   name: Yonsei University studentProject API
   description: The studentProject API from Yonsei University — 26 operation(s) for studentproject.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - studentProject
   properties:
   - type: OpenAPI
@@ -514,7 +552,8 @@ apis:
   name: Yonsei University studentThesis API
   description: The studentThesis API from Yonsei University — 26 operation(s) for studentthesis.
   humanURL: https://yonsei.elsevierpure.com/
-  tags:
+  tags: []
+  tags_raw:
   - studentThesis
   properties:
   - type: OpenAPI
@@ -541,6 +580,8 @@ apis:
   description: The user API from Yonsei University — 7 operation(s) for user.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - User
+  tags_raw:
   - user
   properties:
   - type: OpenAPI
