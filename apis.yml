@@ -1,623 +1,254 @@
 ---
 aid: yonsei
 name: Yonsei University
+x-type: university
+x-category: Private Research University
 description: >-
-  Yonsei University is a private research university in Seoul, South Korea,
-  founded in 1885 and ranked #73 in the QS World University Rankings 2025. Its
-  public, machine-readable footprint is limited and primarily research- and
-  library-oriented: the Yonsei Research Information portal runs on Elsevier Pure
-  (which exposes Pure OAI-PMH and REST endpoints, but they require
-  credentials/IP allow-listing and return HTTP 401 publicly), and the medical
-  library operates a DSpace 5.5 institutional repository (YUHSpace) whose RSS
-  feed is publicly reachable while its OAI-PMH/REST paths are not currently
-  resolvable. No official, documented public developer portal or open API was
-  confirmed; the only related GitHub presence is a student-run Google Developer
-  Group (gdg-yonsei), not an official institutional API organization.
+  Yonsei University (연세대학교) is a private research university in Seoul, South Korea,
+  founded in 1885 and one of the "SKY" institutions. Its programmable footprint is small,
+  and most of what previously appeared under its name was not its own engineering: the
+  Yonsei Research Information portal at yonsei.elsevierpure.com is an Elsevier Pure (CRIS)
+  tenancy whose OpenAPI is authored by Elsevier — info.title "Pure API",
+  contact pure-support@elsevier.com — and whose data endpoints and OAI-PMH feed both return
+  HTTP 401 to the public. That relationship is recorded here as a tenant surface; the
+  contract itself belongs to Elsevier and has been removed from this repo. What Yonsei
+  genuinely operates is narrower and more interesting: a SAML 2.0 Identity Provider on its
+  own domain (kafe.yonsei.ac.kr) registered in the Korean Access FEderation and exported to
+  eduGAIN with the scope yonsei.ac.kr and a Sirtfi declaration; a DSpace 5.5 medical-library
+  repository (YUHSpace) at ir.ymlib.yonsei.ac.kr serving public RSS 2.0 and Atom 1.0 feeds
+  from behind a JavaScript bot challenge, with no OAI-PMH deployed; and a members-only
+  Yonsei Data Portal at data.yonsei.ac.kr that ships no public API. There is no central
+  developer portal, no institution-operated REST API, and no official institutional GitHub
+  organization — the only GitHub presence is GDGoC Yonsei, a student Google Developer Group.
+  The institutional AI posture is a governance document, not an API, and it exists only on
+  the Korean surface.
 type: Index
-deliveryModel:
-  model: saas
-  open_source: false
-  commercial: true
-  callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
-  source:
-  - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
-accessModel:
-  pricing: free
-  onboarding: self-serve
-  trial: false
-  try_now: true
-  public: false
-  label: Free · Self-serve signup
-  confidence: high
-  source:
-  - plans
-  - authentication
-  generated: '2026-07-22'
-  method: derived
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/yonsei.png
 url: https://raw.githubusercontent.com/api-evangelist/yonsei/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
   - University
-  - Research
-  - Library
-  - Repository
+  - Higher Education
+  - Education
+  - Private Research University
   - South Korea
   - Seoul
+  - Research
+  - Research Repository
+  - Identity Federation
+  - Library
+  - Open Data
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 specificationVersion: '0.23'
+
+x-coverage:
+  state: gated
+  reason: tenant_only
+  detail: >-
+    Yonsei publishes no institution-operated REST API and no developer portal. The only
+    complete API contract discoverable under its name is Elsevier's Pure API, served from
+    the tenant host yonsei.elsevierpure.com: the specification at /ws/api/openapi.json is
+    publicly readable (HTTP 200, ~1.7MB) but every data endpoint returns 401 and the Pure
+    OAI-PMH feed at /ws/oai returns 401 as well. The 37 per-tag OpenAPIs previously stored
+    in this repo were splits of that one Elsevier document and have been removed. The
+    institution's own machine-readable surfaces are a SAML 2.0 IdP registered in KAFE and
+    eduGAIN, and DSpace RSS/Atom feeds reachable only after satisfying a JS bot challenge.
+    The medical-library repository has no OAI-PMH webapp deployed (404 on /oai/request,
+    /dspace-oai/request and /oai/driver). Yonsei's generative-AI guideline exists only in
+    Korean, on yure.yonsei.ac.kr, and was found by searching in the local language.
+  evidence:
+    - url: https://yonsei.elsevierpure.com/ws/api/openapi.json
+      status: 200
+      note: Elsevier's Pure API spec, publicly readable — vendor-authored, tenant-served.
+    - url: https://yonsei.elsevierpure.com/ws/api/research-outputs?size=1
+      status: 401
+      note: 'application/problem+json — "Full authentication is required to access this resource"'
+    - url: https://yonsei.elsevierpure.com/ws/oai?verb=Identify
+      status: 401
+      note: Pure OAI-PMH, credential-gated.
+    - url: https://kafe.yonsei.ac.kr/
+      status: 200
+      note: >-
+        Yonsei-operated KAFE federated-authentication server; page states in Korean that
+        Yonsei University operates it.
+    - url: https://technical.edugain.org/api.php?action=list_entities&format=json
+      status: 200
+      note: >-
+        eduGAIN entity https://kafe.yonsei.ac.kr/idp/simplesamlphp — IDPSSODescriptor,
+        federation KAFE, scope yonsei.ac.kr, Sirtfi declared.
+    - url: https://ir.ymlib.yonsei.ac.kr/
+      status: 200
+      note: >-
+        JS bot challenge on first request (sets a js-challenge cookie); YUHSpace DSpace 5.5
+        home page served once the cookie is replayed. Live, not dead.
+    - url: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
+      status: 200
+      note: Real RSS 2.0 XML behind the challenge cookie.
+    - url: https://ir.ymlib.yonsei.ac.kr/oai/request?verb=Identify
+      status: 404
+      note: No OAI-PMH webapp deployed on the institution's own repository host.
+    - url: https://data.yonsei.ac.kr/
+      status: 200
+      note: >-
+        Yonsei Data Portal, institution-operated Next.js app for Yonsei members only;
+        /api, /openapi.json, /llms.txt all 404.
+    - url: https://www.yonsei.ac.kr/
+      status: 200
+      note: GeoIP redirect shell that lands on /sc/index.do (KR) or /en_sc/index.do.
+    - url: https://library.yonsei.ac.kr/
+      status: 200
+      note: Library website; robots.txt disallows all but a handful of notice-board paths. No API found.
+
 apis:
+
+- aid: yonsei:kafe-idp
+  name: Yonsei University KAFE Identity Provider (SAML 2.0)
+  x-operator: institution
+  description: >-
+    Yonsei University operates its own SAML 2.0 Identity Provider for KAFE, the Korean
+    Access FEderation, on its own registrable domain. The entity is registered by
+    kafe.kreonet.net and exported to eduGAIN, where its record shows an IDPSSODescriptor
+    role, the shibmd:Scope yonsei.ac.kr, and a REFEDS Sirtfi declaration, first seen
+    2024-02-23. The software is SimpleSAMLphp. This is the university's strongest
+    institution-operated machine-readable surface: identity federation is
+    institution-operated by definition, and Yonsei's own server says so in Korean —
+    "본 서버는 KAFE 연합인증 서비스의 제공을 목적으로 연세대학교에서 운영합니다."
+    Metadata is not exposed at a public URL on the host; it is distributed through the
+    KAFE aggregate and eduGAIN, which is standard federation practice.
+  humanURL: https://kafe.yonsei.ac.kr/
+  tags:
+  - Identity Federation
+  - SAML
+  - eduGAIN
+  - KAFE
+  - Single Sign-On
+  properties:
+  - type: Documentation
+    url: https://kafe.yonsei.ac.kr/
+  - type: IdentityFederation
+    url: https://www.kafe.or.kr/
+  - type: Conformance
+    url: conformance/yonsei-conformance.yml
+  - type: x-federation-registry
+    url: https://technical.edugain.org/api.php?action=list_entities&format=json
+
 - aid: yonsei:yuhspace
   name: YUHSpace Institutional Repository (DSpace)
+  x-operator: institution
   description: >-
-    YUHSpace is the Yonsei University Health System / Medical Library institutional repository, running
-    DSpace 5.5 and built through the National Library of Korea OAK distribution project. A public RSS
-    2.0 feed is reachable; OAI-PMH and REST API paths were probed but did not resolve publicly (HTTP 404)
-    at review time.
+    YUHSpace is the Yonsei University Health System / Medical Library institutional
+    repository, running DSpace 5.5 on Yonsei's own host and built through the National
+    Library of Korea OAK distribution project. Its public RSS 2.0 and Atom 1.0 site feeds
+    return real XML, but the host puts a JavaScript bot challenge in front of every path:
+    an unauthenticated first request returns a 200 with a ~950-byte challenge shell for
+    any URL, and only replaying the js-challenge cookie reaches the repository. The
+    OAI-PMH webapp is not deployed — /oai/request, /dspace-oai/request and /oai/driver
+    all 404 behind the challenge — and there is no DSpace REST API at /rest.
   humanURL: https://ir.ymlib.yonsei.ac.kr/
   tags:
-  - Repository
+  - Research Repository
   - DSpace
   - Library
   - RSS
+  - Atom
   - OAK
   properties:
   - type: Documentation
     url: https://ir.ymlib.yonsei.ac.kr/
   - type: BlogRSS
     url: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
-- aid: yonsei:yonsei-activity-api
-  name: Yonsei University activity API
-  description: The activity API from Yonsei University — 39 operation(s) for activity.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Activity
-  tags_raw:
-  - activity
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-activity-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-application-api
-  name: Yonsei University application API
-  description: The application API from Yonsei University — 36 operation(s) for application.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Application
-  tags_raw:
-  - application
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-application-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-authorcollaboration-api
-  name: Yonsei University authorCollaboration API
+  - type: AtomFeed
+    url: https://ir.ymlib.yonsei.ac.kr/feed/atom_1.0/site
+
+- aid: yonsei:data-portal
+  name: Yonsei Data Portal
+  x-operator: institution
   description: >-
-    The authorCollaboration API from Yonsei University — 9 operation(s) for authorcollaboration.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - authorCollaboration
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-authorcollaboration-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-award-api
-  name: Yonsei University award API
-  description: The award API from Yonsei University — 37 operation(s) for award.
-  humanURL: https://yonsei.elsevierpure.com/
+    data.yonsei.ac.kr is an institution-operated data portal — "a collection of data
+    resources for Yonsei University members" — on Yonsei's own registrable domain. It is
+    a client-rendered Next.js application gated to university members, and it publishes
+    no machine-readable surface: /api, /api/health, /openapi.json, /sitemap.xml and
+    /llms.txt all return the application's 404 page. Recorded because the institution
+    genuinely operates it, not because it is callable.
+  humanURL: https://data.yonsei.ac.kr/
   tags:
-  - award
+  - Open Data
+  - Data Portal
+  - Members Only
   properties:
-  - type: OpenAPI
-    url: openapi/yonsei-award-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-classificationscheme-api
-  name: Yonsei University classificationScheme API
+  - type: OpenData
+    url: https://data.yonsei.ac.kr/
+
+- aid: yonsei:elsevier-pure
+  name: Yonsei Research Information Portal (Elsevier Pure tenancy)
+  x-operator: tenant
+  x-vendor: Elsevier
+  x-vendor-product: Pure
   description: >-
-    The classificationScheme API from Yonsei University — 7 operation(s) for classificationscheme.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - classificationScheme
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-classificationscheme-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-concept-api
-  name: Yonsei University concept API
-  description: The concept API from Yonsei University — 4 operation(s) for concept.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - concept
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-concept-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-conferenceseries-api
-  name: Yonsei University conferenceSeries API
-  description: The conferenceSeries API from Yonsei University — 14 operation(s) for conferenceseries.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - conferenceSeries
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-conferenceseries-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-contract-api
-  name: Yonsei University contract API
-  description: The contract API from Yonsei University — 26 operation(s) for contract.
+    Yonsei's research information system is an Elsevier Pure (CRIS) tenancy at
+    yonsei.elsevierpure.com. The data is Yonsei's — its researchers, outputs, projects and
+    organizational units — but the contract is not: the OpenAPI served at /ws/api/openapi.json
+    declares info.title "Pure API", version 5.35.3-4, and contact pure-support@elsevier.com,
+    and the same document is shipped by at least nine other institutions in this catalog.
+    It is Elsevier's engineering running under Yonsei's name. The specification is publicly
+    readable, but the API itself is closed: /ws/api/research-outputs returns 401 with
+    "Full authentication is required to access this resource", and the Pure OAI-PMH feed at
+    /ws/oai returns 401. Thirty-seven per-tag OpenAPIs split from this one Elsevier document,
+    and every schema, example, collection, ruleset, vocabulary, JSON-LD context,
+    authentication record and agentic-access record derived from it, were removed from this
+    repo on 2026-08-30; they score against Elsevier, not against Yonsei. The tenant
+    relationship is kept because it is a real institutional fact and one of the few
+    programmable surfaces the university has.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
-  - Contract
-  tags_raw:
-  - contract
+  - Research Information
+  - CRIS
+  - Elsevier Pure
+  - Tenant
+  - Research Repository
   properties:
-  - type: OpenAPI
-    url: openapi/yonsei-contract-api-openapi.yml
   - type: Documentation
+    url: https://yonsei.elsevierpure.com/ws/api/
+  - type: ResearchRepository
     url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
+  - type: x-vendor-spec
     url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-course-api
-  name: Yonsei University course API
-  description: The course API from Yonsei University — 27 operation(s) for course.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - course
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-course-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-dataset-api
-  name: Yonsei University dataSet API
-  description: The dataSet API from Yonsei University — 30 operation(s) for dataset.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Dataset
-  tags_raw:
-  - dataSet
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-dataset-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-education-api
-  name: Yonsei University education API
-  description: The education API from Yonsei University — 14 operation(s) for education.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Education
-  tags_raw:
-  - education
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-education-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-equipment-api
-  name: Yonsei University equipment API
-  description: The equipment API from Yonsei University — 28 operation(s) for equipment.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Equipment
-  tags_raw:
-  - equipment
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-equipment-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-ethicalreview-api
-  name: Yonsei University ethicalReview API
-  description: The ethicalReview API from Yonsei University — 22 operation(s) for ethicalreview.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - ethicalReview
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-ethicalreview-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-event-api
-  name: Yonsei University event API
-  description: The event API from Yonsei University — 22 operation(s) for event.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Event
-  tags_raw:
-  - event
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-event-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-externalorganization-api
-  name: Yonsei University externalOrganization API
-  description: >-
-    The externalOrganization API from Yonsei University — 29 operation(s) for externalorganization.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - externalOrganization
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-externalorganization-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-externalperson-api
-  name: Yonsei University externalPerson API
-  description: The externalPerson API from Yonsei University — 22 operation(s) for externalperson.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - externalPerson
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-externalperson-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-fingerprint-api
-  name: Yonsei University fingerprint API
-  description: The fingerprint API from Yonsei University — 3 operation(s) for fingerprint.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - fingerprint
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-fingerprint-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-fundingopportunity-api
-  name: Yonsei University fundingOpportunity API
-  description: >-
-    The fundingOpportunity API from Yonsei University — 21 operation(s) for fundingopportunity.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - fundingOpportunity
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-fundingopportunity-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-impact-api
-  name: Yonsei University impact API
-  description: The impact API from Yonsei University — 31 operation(s) for impact.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Impact
-  tags_raw:
-  - impact
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-impact-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-journal-api
-  name: Yonsei University journal API
-  description: The journal API from Yonsei University — 22 operation(s) for journal.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - journal
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-journal-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-keywordgroupconfiguration-api
-  name: Yonsei University keywordGroupConfiguration API
-  description: >-
-    The keywordGroupConfiguration API from Yonsei University — 7 operation(s) for keywordgroupconfiguration.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - keywordGroupConfiguration
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-keywordgroupconfiguration-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-milestone-api
-  name: Yonsei University milestone API
-  description: The milestone API from Yonsei University — 24 operation(s) for milestone.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - milestone
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-milestone-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-organization-api
-  name: Yonsei University organization API
-  description: The organization API from Yonsei University — 34 operation(s) for organization.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Organization
-  tags_raw:
-  - organization
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-organization-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-person-api
-  name: Yonsei University person API
-  description: The person API from Yonsei University — 58 operation(s) for person.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Persons
-  tags_raw:
-  - person
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-person-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-personexpertise-api
-  name: Yonsei University personExpertise API
-  description: The personExpertise API from Yonsei University — 7 operation(s) for personexpertise.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - personExpertise
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-personexpertise-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-pressmedia-api
-  name: Yonsei University pressMedia API
-  description: The pressMedia API from Yonsei University — 24 operation(s) for pressmedia.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - pressMedia
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-pressmedia-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-prize-api
-  name: Yonsei University prize API
-  description: The prize API from Yonsei University — 29 operation(s) for prize.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - prize
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-prize-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-project-api
-  name: Yonsei University project API
-  description: The project API from Yonsei University — 33 operation(s) for project.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Project
-  tags_raw:
-  - project
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-project-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-publisher-api
-  name: Yonsei University publisher API
-  description: The publisher API from Yonsei University — 18 operation(s) for publisher.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Publishers
-  tags_raw:
-  - publisher
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-publisher-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-researchoutput-api
-  name: Yonsei University researchOutput API
-  description: The researchOutput API from Yonsei University — 67 operation(s) for researchoutput.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - researchOutput
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-researchoutput-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-role-api
-  name: Yonsei University role API
-  description: The role API from Yonsei University — 2 operation(s) for role.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - Role
-  tags_raw:
-  - role
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-role-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-semester-api
-  name: Yonsei University semester API
-  description: The semester API from Yonsei University — 8 operation(s) for semester.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - semester
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-semester-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-specialization-api
-  name: Yonsei University specialization API
-  description: The specialization API from Yonsei University — 8 operation(s) for specialization.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - specialization
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-specialization-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-studentproject-api
-  name: Yonsei University studentProject API
-  description: The studentProject API from Yonsei University — 26 operation(s) for studentproject.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - studentProject
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-studentproject-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-studentthesis-api
-  name: Yonsei University studentThesis API
-  description: The studentThesis API from Yonsei University — 26 operation(s) for studentthesis.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags: []
-  tags_raw:
-  - studentThesis
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-studentthesis-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-thesaurus-api
-  name: Yonsei University thesaurus API
-  description: The thesaurus API from Yonsei University — 5 operation(s) for thesaurus.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - thesaurus
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-thesaurus-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
-- aid: yonsei:yonsei-user-api
-  name: Yonsei University user API
-  description: The user API from Yonsei University — 7 operation(s) for user.
-  humanURL: https://yonsei.elsevierpure.com/
-  tags:
-  - User
-  tags_raw:
-  - user
-  properties:
-  - type: OpenAPI
-    url: openapi/yonsei-user-api-openapi.yml
-  - type: Documentation
-    url: https://yonsei.elsevierpure.com/
-  - type: x-spec-source
-    url: https://yonsei.elsevierpure.com/ws/api/openapi.json
+    note: >-
+      Elsevier's contract, not Yonsei's. Publicly readable, deliberately NOT saved into
+      this repo. Score it against Elsevier.
+
 common:
-  - type: CapabilityMap
-    url: capabilities/yonsei-capability-edges.yml
-    name: Yonsei University Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/yonsei-agentic-access.yml
-  - type: DomainSecurity
-    url: security/yonsei-domain-security.yml
-  - type: Authentication
-    url: authentication/yonsei-authentication.yml
   - type: Website
     url: https://www.yonsei.ac.kr/
-  - type: GitHub
+  - type: Website
+    name: Yonsei University (English)
+    url: https://www.yonsei.ac.kr/en_sc/index.do
+  - type: IdentityFederation
+    name: Yonsei KAFE Identity Provider
+    url: https://kafe.yonsei.ac.kr/
+  - type: ResearchRepository
+    name: YUHSpace (DSpace 5.5, Yonsei Medical Library)
+    url: https://ir.ymlib.yonsei.ac.kr/
+  - type: LibraryCatalog
+    name: Yonsei University Library
+    url: https://library.yonsei.ac.kr/
+  - type: OpenData
+    name: Yonsei Data Portal (members only)
+    url: https://data.yonsei.ac.kr/
+  - type: AIPolicy
+    name: 생성형 AI 활용 가이드라인 (Generative AI Usage Guideline, Research Ethics Office)
+    url: https://yure.yonsei.ac.kr/admin/info/adminBookDetail.do?book_seq=65
+  - type: GitHubOrganization
+    name: GDGoC Yonsei University (student developer group, not an institutional org)
     url: https://github.com/gdg-yonsei
   - type: LinkedIn
     url: https://www.linkedin.com/school/yonsei/
+  - type: Conformance
+    url: conformance/yonsei-conformance.yml
+  - type: DomainSecurity
+    url: security/yonsei-domain-security.yml
   - type: Plans
     url: plans/yonsei-plans-pricing.yml
   - type: RateLimits
@@ -626,6 +257,7 @@ common:
     url: finops/yonsei-finops.yml
   - type: Review
     url: review.yml
+
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
