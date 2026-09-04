@@ -23,7 +23,20 @@ description: >-
   The institutional AI posture is a governance document, not an API, and it exists only on
   the Korean surface.
 type: Index
-position: Consumer
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: low
+  source:
+  - plans
+  - security
+  generated: '2026-09-02'
+  method: derived
+position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/yonsei.png
 url: https://raw.githubusercontent.com/api-evangelist/yonsei/refs/heads/main/apis.yml
