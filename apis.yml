@@ -136,6 +136,12 @@ apis:
   - SAML
   - eduGAIN
   - KAFE
+  - SSO
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - eduGAIN
+  - KAFE
   - Single Sign-On
   properties:
   - type: Documentation
@@ -216,6 +222,12 @@ apis:
     programmable surfaces the university has.
   humanURL: https://yonsei.elsevierpure.com/
   tags:
+  - Research Information
+  - CRI
+  - Elsevier Pure
+  - Tenants
+  - Research Repository
+  tags_raw:
   - Research Information
   - CRIS
   - Elsevier Pure
