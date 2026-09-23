@@ -1,0 +1,140 @@
+generated: '2026-08-30'
+method: probed
+source: >-
+  Live probes of Yonsei-operated hosts on 2026-08-30, plus the eduGAIN technical
+  entities database (https://technical.edugain.org/api.php?action=list_entities).
+provider: Yonsei University
+providerId: yonsei
+regime: education
+description: >-
+  Conformance of INSTITUTION-OPERATED Yonsei surfaces against the Kin Score `education`
+  regime domain standards. Only surfaces whose operator is Yonsei University itself are
+  assessed here; the Elsevier Pure deployment at yonsei.elsevierpure.com is a tenant
+  relationship and its conformance belongs to Elsevier's own profile, not to Yonsei's.
+  Reward-only: absence is recorded as absence, never as a partial credit.
+
+standards:
+
+  - standard: saml
+    status: conformant
+    operator: institution
+    summary: >-
+      Yonsei University operates a SAML 2.0 Identity Provider for the Korean Access
+      FEderation (KAFE), registered in eduGAIN. The IdP declares an IDPSSODescriptor
+      role, asserts the shibmd:Scope `yonsei.ac.kr`, and declares REFEDS Sirtfi.
+    evidence:
+      - kind: saml-entity-id
+        value: https://kafe.yonsei.ac.kr/idp/simplesamlphp
+        note: entityID as registered in eduGAIN; an identifier, not a dereferenceable URL.
+      - kind: registry-record
+        url: https://technical.edugain.org/api.php?action=list_entities&format=json
+        locator: >-
+          entityid == "https://kafe.yonsei.ac.kr/idp/simplesamlphp"
+        observed:
+          roledesc: IDPSSODescriptor
+          registrationAuthority: http://kafe.kreonet.net
+          federation: KAFE
+          displayName: Yonsei University
+          scopes: yonsei.ac.kr
+          sirtfi: declared
+          first_seen: '2024-02-23'
+        status: 200
+        checked: '2026-08-30'
+      - kind: operator-statement
+        url: https://kafe.yonsei.ac.kr/
+        status: 200
+        checked: '2026-08-30'
+        quote_ko: >-
+          본 서버는 KAFE 연합인증 서비스의 제공을 목적으로 연세대학교에서 운영합니다.
+        quote_en: >-
+          This server is operated by Yonsei University for the purpose of providing the
+          KAFE federated authentication service.
+        note: >-
+          The institution states in its own words, on its own registrable domain, that it
+          operates the server. This is the operator evidence; the eduGAIN record is the
+          machine-readable contract.
+    software: SimpleSAMLphp
+    caveat: >-
+      The IdP does not publish its SAML metadata at a public URL on kafe.yonsei.ac.kr
+      (/idp/*, /simplesaml/*, /Shibboleth.sso/Metadata all return 404). Metadata is
+      distributed through the KAFE aggregate and eduGAIN, which is normal federation
+      practice and is where the machine-readable document was read.
+
+  - standard: shibboleth
+    status: not_conformant
+    summary: >-
+      Not claimed. The Yonsei IdP runs SimpleSAMLphp, not the Shibboleth Identity
+      Provider software. It participates in the same eduGAIN/SAML ecosystem, but
+      recording `shibboleth` here would be a software claim we did not observe.
+
+  - standard: oai-pmh
+    status: not_conformant
+    summary: >-
+      No reachable institution-operated OAI-PMH endpoint was found.
+    evidence:
+      - url: https://ir.ymlib.yonsei.ac.kr/oai/request?verb=Identify
+        status: 404
+        checked: '2026-08-30'
+        note: >-
+          Probed behind the host's JS-challenge cookie. DSpace 5.5 is running, but the
+          OAI-PMH webapp is not deployed. /dspace-oai/request and /oai/driver also 404.
+      - url: https://yonsei.elsevierpure.com/ws/oai?verb=Identify
+        status: 401
+        checked: '2026-08-30'
+        note: >-
+          Pure OAI-PMH exists but is credential-gated — and it is Elsevier's endpoint on
+          a tenant host, so it would not count for Yonsei even if it were open.
+
+  - standard: scim
+    status: not_conformant
+    summary: No SCIM provisioning endpoint or declaration found on any Yonsei-operated host.
+
+  - standard: lti
+    status: not_conformant
+    summary: >-
+      No LTI tool or platform registration is publicly discoverable. Yonsei's LMS
+      (LearnUs) is behind institutional authentication.
+
+  - standard: oneroster
+    status: not_conformant
+    summary: No OneRoster surface found. OneRoster adoption is K-12-weighted and rare in Korean HE.
+
+  - standard: ed-fi
+    status: not_conformant
+    summary: No Ed-Fi surface found. Ed-Fi is a US K-12 standard with no Korean HE presence.
+
+  - standard: caliper
+    status: not_conformant
+    summary: No Caliper Analytics event store or sensor declaration found.
+
+  - standard: qti
+    status: not_conformant
+    summary: No QTI assessment interchange surface found.
+
+  - standard: orcid
+    status: not_conformant
+    operator_note: >-
+      ORCID identifiers are carried in the Elsevier Pure person records at
+      yonsei.elsevierpure.com, but that is Elsevier's contract on a tenant host and the
+      records are 401-gated. No institution-operated ORCID integration was observed.
+
+  - standard: datacite
+    status: not_conformant
+    operator_note: >-
+      No institution-operated DataCite DOI minting surface was observed. YUHSpace
+      (DSpace 5.5) exposes handle-style identifiers, not DataCite DOIs, on its public feeds.
+
+  - standard: crossref
+    status: not_conformant
+    summary: No institution-operated Crossref deposit or query surface found.
+
+summary:
+  assessed: 12
+  conformant: 1
+  conformant_standards:
+    - saml
+  note: >-
+    One real hit. It is the identity-federation class the university pipeline flags as
+    "institution-operated by definition, machine-readable, and almost never catalogued",
+    and for Yonsei it is the single strongest machine-readable surface the institution
+    itself runs.

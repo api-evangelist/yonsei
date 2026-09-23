@@ -1,0 +1,155 @@
+slug: yonsei
+provider: Yonsei University
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 13
+edges:
+- tag: ethicalReview
+  spec_file: yonsei-ethicalreview-api-openapi.yml
+  capability_id: BC-4780.30
+  capability_id_l1: BC-4780
+  capability_name: Research Ethics & Integrity Oversight
+  confidence: 0.9
+  evidence: ethicalReview_create 'Create ethicalReview'; ethicalReview_getAllowedTypes 'A list of allowed
+    ethical review types'; schemas EthicalReview, EthicalReviewAwardAssociation
+  reason: The operations manage research ethical review records tied to projects and awards, which is
+    directly research ethics and integrity oversight.
+- tag: researchOutput
+  spec_file: yonsei-researchoutput-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.9
+  evidence: GET /research-outputs  researchOutput_list  Lists all research outputs; 'allowed-article-processing-charge-currencies';
+    ElectronicVersionFile
+  reason: Operations create and list research outputs with contributor roles, electronic version files,
+    licences and article processing charges — the stewardship of scholarly output and open-access publication
+    metadata.
+- tag: application
+  spec_file: yonsei-application-api-openapi.yml
+  capability_id: BC-4780.20
+  capability_id_l1: BC-4780
+  capability_name: Research Grant Management
+  confidence: 0.85
+  evidence: GET /applications 'Lists all applications'; application_getAllowedApplicantRoles, application_getAllowedBudgetAccountClassifications;
+    schemas AwardRef, FundingOpportunityRef, ApplicationFundingBudgetAssociation
+  reason: Grant funding applications with applicant roles, budgets, funding opportunities and awards —
+    the pre-award stage of research grant management, not student admissions applications.
+- tag: fundingOpportunity
+  spec_file: yonsei-fundingopportunity-api-openapi.yml
+  capability_id: BC-4780.20
+  capability_id_l1: BC-4780
+  capability_name: Research Grant Management
+  confidence: 0.85
+  evidence: PUT /funding-opportunities 'Create funding opportunity'; 'allowed-classified-eligibility-types';
+    schemas FundingOpportunity, FundingOpportunityAcademicDegreeEligibility
+  reason: Cataloguing of research funding opportunities with eligibility criteria is the pre-award opportunity-identification
+    part of research grant lifecycle management.
+- tag: impact
+  spec_file: yonsei-impact-api-openapi.yml
+  capability_id: BC-4780.60
+  capability_id_l1: BC-4780
+  capability_name: Research Impact & Assessment
+  confidence: 0.85
+  evidence: GET /impacts/allowed-impact-categories; GET /impacts/allowed-impact-evidence-indicators; GET
+    /impacts/allowed-impact-levels; schemas Impact, ImpactResearchOutputAssociation
+  reason: Records of research impact with categories, levels and evidence indicators linked to research
+    outputs — this is research impact case-study and assessment management.
+- tag: activity
+  spec_file: yonsei-activity-api-openapi.yml
+  capability_id: BC-4780
+  capability_id_l1: BC-4780
+  capability_name: Research & Scholarship Management
+  confidence: 0.8
+  evidence: '''managing research information data in Pure''; GET /activities ''Lists all activities'';
+    activity_getAllowedConsultancyPersonRoles, activity_getAllowedEditorialWorkPersonRoles, activity_getAllowedDegreeOfRecognitions;
+    schemas ResearchOutputRef, ProjectRef'
+  reason: CRUD over research-activity records (consultancy, editorial work, recognition) in a research
+    information management system — clearly higher-education research and scholarship management; sub-capability
+    ambiguous between output tracking and collaboration, so L1 only.
+- tag: award
+  spec_file: yonsei-award-api-openapi.yml
+  capability_id: BC-4780.20
+  capability_id_l1: BC-4780
+  capability_name: Research Grant Management
+  confidence: 0.8
+  evidence: GET /awards award_list Lists all awards; award_getAllowedFundingClassifications 'A list of
+    allowed funding classifications'; schemas Award, Account, ResearcherCommitment, Milestone
+  reason: Pure's award entity is the funded research grant/award record (funding classifications, budget
+    accounts, award-holder roles, milestones), which is post/pre-award research grant administration in
+    a research information system.
+- tag: user
+  spec_file: yonsei-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /users/{uuid}/actions/reset-password  user_resetPassword  Reset user password; PUT /users/{uuid}/roles  user_update_roles_for_user  Updates
+    roles
+  reason: Application user account lifecycle, password reset and role assignment are identity and access
+    management operations, not an education business capability.
+- tag: project
+  spec_file: yonsei-project-api-openapi.yml
+  capability_id: BC-4780
+  capability_id_l1: BC-4780
+  capability_name: Research & Scholarship Management
+  confidence: 0.75
+  evidence: 'GET /projects  project_list  Lists all projects; schemas: Project, ApplicationRef, ResearchOutputAwardableAssociation,
+    StudentThesisRef'
+  reason: Pure is a research information system; the project entity records research projects with award/application,
+    organisation and research-output associations. That is higher-education research mission management
+    (BC-4780). Which sub-capability (portfolio vs. grant administration) is ambiguous, so only the L1
+    is asserted.
+- tag: course
+  spec_file: yonsei-course-api-openapi.yml
+  capability_id: BC-4700
+  capability_id_l1: BC-4700
+  capability_name: Curriculum & Programme Management
+  confidence: 0.7
+  evidence: course_create 'Create course'; course_getAllowedCourseOccurrenceSemesterTypes 'A list of allowed
+    semester types for course occurrences'; course_getAllowedCreditTypes 'A list of allowed credit types';
+    course_getAllowedCourseOccurrenceLecturerRoleTypes
+  reason: The surface authors and maintains course records with credits, formats, semester occurrences
+    and lecturer roles — curriculum/course definition. Left at L1 because evidence spans both course design
+    and catalogue publication.
+- tag: dataSet
+  spec_file: yonsei-dataset-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.7
+  evidence: dataSet_create 'Create data set'; dataSet_getAllowedDoiAccessTypes 'A list of allowed access
+    types for DOI'; schemas ResearchOutputRef, PublisherRef, DataSetRef
+  reason: Research datasets registered with DOIs, contributors, publishers and links to research outputs
+    are scholarly output stewardship including persistent identifiers and open access.
+- tag: journal
+  spec_file: yonsei-journal-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.7
+  evidence: PUT /journals 'Create journal'; GET /journals/allowed-metric-collections; schemas SherpaRomeoOpenAccessPermission,
+    PublisherRef, MetricValue
+  reason: Journal registry with publisher, open-access permissions (Sherpa Romeo) and bibliometric metric
+    collections underpins stewardship of scholarly publication output. Some chance this is better read
+    as pure reference-data mastering, hence 0.7.
+- tag: milestone
+  spec_file: yonsei-milestone-api-openapi.yml
+  capability_id: BC-4780.20
+  capability_id_l1: BC-4780
+  capability_name: Research Grant Management
+  confidence: 0.7
+  evidence: GET /milestones/award/allowed-administrative-roles 'A list of allowed administrative roles
+    for milestones which have a related award'; schemas AwardRef, ApplicationRef, ContractRef, MilestoneReminder
+  reason: Milestones are attached to research applications, awards, contracts and projects with completion
+    states and reminders — pre/post-award grant administration tracking. Could also be read as generic
+    project tracking, so 0.7.
