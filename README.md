@@ -1,4 +1,4 @@
-# Yonsei University (yonsei)
+# Yonsei University
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,52 +64,111 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Yonsei University is a private research university in Seoul, South Korea, founded in 1885 and ranked #73 in the QS World University Rankings 2025. This repository catalogs its public, machine-readable developer and API footprint as an [APIs.json](https://apievangelist.com/apis-json/) provider profile. That footprint is limited: the research portal runs on Elsevier Pure (OAI-PMH/REST present but gated), and the medical library runs a DSpace institutional repository (RSS public, OAI/REST not currently reachable). No official open developer portal was confirmed.
+Yonsei University (연세대학교) is a private research university in Seoul, South Korea, founded in 1885 and one of the "SKY" institutions. Its programmable footprint is small, and most of what previously appeared under its name was not its own engineering: the Yonsei Research Information portal at yonsei.elsevierpure.com is an Elsevier Pure (CRIS) tenancy whose OpenAPI is authored by Elsevier — info.title "Pure API", contact pure-support@elsevier.com — and whose data endpoints and OAI-PMH feed both return HTTP 401 to the public. That relationship is recorded here as a tenant surface; the contract itself belongs to Elsevier and has been removed from this repo. What Yonsei genuinely operates is narrower and more interesting: a SAML 2.0 Identity Provider on its own domain (kafe.yonsei.ac.kr) registered in the Korean Access FEderation and exported to eduGAIN with the scope yonsei.ac.kr and a Sirtfi declaration; a DSpace 5.5 medical-library repository (YUHSpace) at ir.ymlib.yonsei.ac.kr serving public RSS 2.0 and Atom 1.0 feeds from behind a JavaScript bot challenge, with no OAI-PMH deployed; and a members-only Yonsei Data Portal at data.yonsei.ac.kr that ships no public API. There is no central developer portal, no institution-operated REST API, and no official institutional GitHub organization — the only GitHub presence is GDGoC Yonsei, a student Google Developer Group. The institutional AI posture is a governance document, not an API, and it exists only on the Korean surface.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/yonsei/refs/heads/main/apis.yml
-- Run it with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=yonsei-api-evangelist&utm_content=repo
+**Areas:** University · Higher Education · Education · Private Research University · South Korea · Seoul · Research · Research Repository · Identity Federation · Library · Open Data
 
-## Type
+## Yonsei University on APIs.io
 
-- Index / Consumer / 3rd-Party
+Everything profiled for Yonsei University is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/yonsei/](https://apis.io/providers/yonsei/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-Education, Higher Education, University, Research, Library, Repository, South Korea, Seoul
+- [Yonsei University KAFE Identity Provider (SAML 2.0)](https://apis.io/apis/yonsei/kafe-idp/) — Yonsei University operates its own SAML 2.0 Identity Provider for KAFE, the Korean Access FEderation, on its own registrable domain. The entity is…
+- [YUHSpace Institutional Repository (DSpace)](https://apis.io/apis/yonsei/yuhspace/) — YUHSpace is the Yonsei University Health System / Medical Library institutional repository, running DSpace 5.5 on Yonsei's own host and built through the…
+- [Yonsei Data Portal](https://apis.io/apis/yonsei/data-portal/) — data.yonsei.ac.kr is an institution-operated data portal — "a collection of data resources for Yonsei University members" — on Yonsei's own registrable…
+- [Yonsei Research Information Portal (Elsevier Pure tenancy)](https://apis.io/apis/yonsei/elsevier-pure/) — Yonsei's research information system is an Elsevier Pure (CRIS) tenancy at yonsei.elsevierpure.com. The data is Yonsei's — its researchers, outputs,…
 
-## APIs
+### Published properties
 
-- **Yonsei Research Information Portal (Elsevier Pure)** — Research outputs, profiles, projects, and organizations on Elsevier Pure. Pure OAI-PMH (`/ws/oai`) and REST (`/ws/api`) endpoints exist but return HTTP 401 (gated). Docs: https://yonsei.elsevierpure.com/
-- **YUHSpace Institutional Repository (DSpace)** — Yonsei University Health System / Medical Library DSpace 5.5 repository (built via the National Library of Korea OAK project). Public RSS feed reachable; OAI-PMH/REST paths return HTTP 404. Docs: https://ir.ymlib.yonsei.ac.kr/ — RSS: https://ir.ymlib.yonsei.ac.kr/feed/rss_2.0/site
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Plans
+#### Vocabulary (1)
 
-- [plans/yonsei-plans-pricing.yml](plans/yonsei-plans-pricing.yml)
+The provider's domain terms, defined.
 
-## Rate Limits
+- [Yonsei University Pure Research Information Vocabulary](https://apis.io/vocabularies/yonsei/yonsei-vocabulary/)
 
-- [rate-limits/yonsei-rate-limits.yml](rate-limits/yonsei-rate-limits.yml)
+#### Security (1)
 
-## FinOps
+Authentication, trust centre, and vulnerability disclosure.
 
-- [finops/yonsei-finops.yml](finops/yonsei-finops.yml)
+- [Yonsei Domain Security](https://apis.io/security/yonsei/yonsei-domain-security/)
 
-## Timestamps
+#### Plans and pricing (1)
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+Published plans, tiers and prices.
 
-## Common Properties
+- [Yonsei Plans Pricing](https://apis.io/plans/yonsei/yonsei-plans-pricing/)
 
-- Website: https://www.yonsei.ac.kr/
-- GitHub: https://github.com/gdg-yonsei (student Google Developer Group, not an official institutional API org)
-- LinkedIn: https://www.linkedin.com/school/yonsei/
-- Plans, Rate Limits, FinOps, Review pointers (see files above and [review.yml](review.yml))
+#### Rate limits (1)
 
-## Notes
+Published request limits.
 
-All entries are based on live verification on 2026-06-03; no endpoints were fabricated. The Elsevier Pure OAI-PMH and REST endpoints exist but are gated (HTTP 401). The YUHSpace DSpace repository is live with a working RSS feed, but its OAI-PMH and REST paths did not resolve publicly (HTTP 404). No official, documented public developer portal or open API was found. See [review.yml](review.yml) for the full list of probed URLs and their HTTP statuses.
+- [Yonsei Rate Limits](https://apis.io/rate-limits/yonsei/yonsei-rate-limits/)
 
-## Maintainers
+#### FinOps (1)
 
-- Kin Lane — kin@apievangelist.com
+What the API costs to run, by operation.
+
+- [Yonsei Finops](https://apis.io/finops/yonsei/yonsei-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.yonsei.ac.kr/)
+- [GitHub](https://github.com/gdg-yonsei)
+
+## API Evangelist rating
+
+**Kin Score 10.5** — minimal · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 4.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 9.5 |
+| Access clarity | 5.3 |
+
+**Agent readiness 0.6** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/yonsei/](https://apis.io/providers/yonsei/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Yonsei University: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/yonsei/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
